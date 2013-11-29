@@ -1,0 +1,46 @@
+
+<div id="analyse_1" class="page" data-role="page" data-add-back-btn="true">
+    <div id="header_analyse_1" class="header" data-role="header" data-position="fixed"><h1>Analyse</h1></div>
+    <div data-role="content" class="content">
+        <div class="ui-grid-a" style="max-width: 500px;">
+            <div class="ui-block-a" style="width: 30%;"><p>Timeframe:</p></div>
+            <div class="ui-block-b" style="width: 65%;">
+                <select name="timeframe" id="timeframe"  data-mini="true">
+                    <option value="daily">Daily</option>
+                    <!--option value="weekly">Weekly</option-->
+                    <option value="monthly">Monthly</option>
+                    <option value="yearly">Yearly</option>
+                </select>
+            </div>
+            <div class="ui-block-a" style="width: 30%;"><p>Start date:</p></div>
+            <div class="ui-block-b" style="width: 65%;">
+                <input type="date" placeholder='14/11/2013' name='start-start' id='start-date'></input>
+            </div>
+            <div class="ui-block-a" style="width: 30%;"><p>End date:</p></div>
+            <div class="ui-block-b" style="width: 65%;">
+                <input type="date" name='end-date' id='end-date'></input>
+            </div>
+            <div class="ui-block-a" style="width: 30%;"><p>Chart Type:</p></div>
+            <div class="ui-block-b" style="width: 65%;">
+                <select name="chart-type" id="chart-type"  data-mini="true">
+                    <option value="bar">Bar Chart</option>
+                    <option value="flow">Flow Chart</option>
+                </select>
+            </div>
+            <div class="ui-block-a" style="width: 30%;"><p>Patient:</p></div>
+            <div class="ui-block-b" style="width: 65%;">
+                <select name="patient" id="patient"  data-mini="true">
+                    <option value="1">Patient 1</option>
+                    <option value="2">Patient 2</option>
+                </select>
+            </div>
+        </div>
+        <div id="behaviours_analyse_container"></div>
+
+        <br />
+        
+        <a id="generate_graph" data-role="button" style="max-width: 300px;" data-mini="true" href="./analyse_2.html">Generate Graph</a>
+
+    </div>
+</div>
+

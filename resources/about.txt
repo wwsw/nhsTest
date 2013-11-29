@@ -1,0 +1,16 @@
+About:*
+This app is a problem solution for the NHS Foundation Trust's SABP. The idea originated from Dr. Raja Mukherjee, who wanted to remove the tedious process monitoring patients on paper forms, before manually uploading this data into a Microsoft Excel spreadsheet.
+
+This app is envisioned to make data collection and analysis of patient behaviours more simple and more efficient for users.*
+#
+Idea by:*
+The NHS Foundation Trust
+Dr. Raja Mukherjee*
+#
+Developers:*
+Max Gander (UCL)
+David Reischer (UCL)
+Wendy Wong (UCL)*
+#
+Version:*
+v.0.3*

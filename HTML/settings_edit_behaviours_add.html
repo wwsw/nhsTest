@@ -1,0 +1,26 @@
+<div id="settings_edit_behaviours_add" class="page" data-role="page" data-add-back-btn="true">
+    <div id="header_settings_edit_behaviours_add" class="header" data-role="header" data-position="fixed"><h1>Add Behaviour</h1></div>
+    <div data-role="content" class="content">
+        <div data-role="fieldcontain">
+            <label for="behaviour_name">Behaviour:</label>
+            <input type="text" name="behaviour_name" id="behaviour_name" value="" />
+        </div>
+        <div data-role="fieldcontain">
+            <label for="behaviour_description">Description:</label>
+            <textarea cols="10" rows="15" name="behaviour_description" id="behaviour_description"></textarea>
+        </div>
+        <div data-role="fieldcontain">
+            <label for="behaviour_timeout">Timeout interval: <a href='#timout_pop_up' style='vertical-align: top; margin-top: 0' data-rel='popup'  data-role='button' class='ui-icon-alt' data-inline='true' data-transition='pop' data-icon='info' data-iconpos='notext'>Description</a></label> 
+            <!-- step="10" makes 10 second steps, makes input easier -->
+            <input type="range"name="behaviour_timeout" id="behaviour_timeout" value="10" min="0" max="600" data-highlight="true" step="10" />
+        </div>
+        <a id="save_new_behaviour" data-role="button" style="max-width: 300px;" data-mini="true">Save</a>
+
+        <!-- timout interval information pop-up -->
+        <div data-role='popup' id='timout_pop_up' class='ui-content'  data-overlay-theme='a' style="max-width: 400px;">
+            <a href='#' data-rel='back' data-role='button' data-icon='delete' data-iconpos='notext' class='ui-btn-right'>Close</a>
+            <p>This sets the minimum time in seconds, which has to pass before this behaviour can be recorded again</p>
+        </div>
+
+    </div>
+</div>

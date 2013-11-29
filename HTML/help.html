@@ -1,0 +1,106 @@
+<div id="help" class="page" data-role="page" data-add-back-btn="true">
+    <div id="header_help" class="header" data-role="header" data-position="fixed"><h1>Help</h1></div>
+    <div data-role="content" class="content">
+       <div data-role="collapsible-set">
+
+            <!--Monitoring behaviors-->
+            <div data-role="collapsible">
+                <h3>Behaviour Monitoring</h3>
+
+                <!--Anchor text-->
+                <a class="native-anchor" href="help.html#behaviour1">How do we log a behaviour incident?</a><br>
+                <a class="native-anchor" href="help.html#behaviour2">This is a sample question?</a><br>
+
+                <!--Question and Answer-->
+                <p id="behaviour1"><b>How do we log a behaviour incident?</b><br>
+                    On the monitoring page for the patient, you simply press the button with the behaviour name! A pop will let you know if the logging was saved to the system.</p>
+
+                <p id="behaviour2"><b>This is a sample question?</b><br>
+                    I am a sample answer!</p>
+            </div>
+
+
+            <!---Assigning behaviours-->
+            <div data-role="collapsible">
+                <h3>Assigning Behaviours</h3>
+
+                <!--Anchor text-->
+                <a class="native-anchor" href="help.html#assign1">How do we add a new behaviour entry?</a><br>
+                <a class="native-anchor" href="help.html#assign2">What is a "Timeout Interval"?</a><br>
+                <a class="native-anchor" href="help.html#assign3">This is a sample question?</a><br>
+                <a class="native-anchor" href="help.html#assign4">This is a sample question?</a><br>
+
+                <!--Question and Answer-->
+                <p id="assign1"><b>How do we add a new behaviour entry?</b><br>
+                    Each behaviour is unique, and will need to be added to each patient seperately. The option to add behaviours can be found in Home -> Assign -> [Patient name] -> Add a behaviour. Give a name and brief description of the behaviour, and set the timeout interval between button presses.</p>
+
+                <p id="assign2"><b>What is a "Timeout Interval"?</b><br>
+                    For more accurate logging, an interval between button presses has been implemented. This means that when a user logs a behaviour by pressing the button, there is a period of wait time before the button can be pressed again.</p>
+
+                <p id="assign3"><b>This is a sample question?</b><br>
+                    I am a sample answer!</p>
+
+                <p id="assign3"><b>This is a sample question?</b><br>
+                    I am a sample answer!<br>
+                    I am a sample answer!<br>
+                    I am a sample answer!<br>
+                    I am a sample answer!<br>
+                    I am a sample answer!<br>
+                    I am a sample answer!<br>
+                    I am a sample answer!<br></p>
+
+                <p id="assign4"><b>This is a sample question?</b><br>
+                    I am a sample answer!</p>
+            </div>
+
+
+            <!--Editing patiets-->
+            <div data-role="collapsible">
+                <h3>Editing Patients</h3>
+
+                <!--Anchor text-->
+                <a class="native-anchor" href="help.html#editing1">This is a sample question?</a><br>
+
+
+                <!--Question and Answer-->
+                 <p id="editing1"><b>This is a sample question?</b><br>
+                    I am a sample answer!</p>
+            </div>
+
+
+            <!--Analysing data-->
+            <div data-role="collapsible">
+                <h3>Analysing Data</h3>
+
+                <!--Anchor text-->
+                <a class="native-anchor" href="help.html#analysis1">This is a sample question?</a><br>
+
+                <!--Question and Answer-->
+                  <p id="analysis1"><b>This is a sample question?</b><br>
+                    I am a sample answer!</p>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script>
+     $('a.native-anchor').bind('click', function(ev) {
+         var target = $( $(this).attr('href') ).get(0).offsetTop;
+         $.mobile.silentScroll(target);
+         return false;
+     });
+ </script>
+
+<!-- TEMPLATE
+
+<div data-role="collapsible">
+    <h3>[Heading]</h3>
+
+        <a href="help.html#[p id]">How do we log a behaviour incident?</a><br>
+        <a href="help.html#behaviour2">This is a sample question?</a><br>
+
+        <p id="behaviour1"><b>This is a sample question.</b><br>
+        Sample text.</p>
+
+    -->

@@ -1,0 +1,59 @@
+/*disable mousese lection of text (for browser view)
+Safari input doesn't work with this -> TODO review lines 
+*{
+	-webkit-user-select:none;
+	-moz-user-select:none;
+	-ms-user-select:none;
+	-o-user-select:none;
+	user-select:none;
+}
+*/
+
+/*overwrite menu panel list view and button look*/
+.menu_links li{
+	background: transparent !important;
+	border:none;
+	border-bottom:0px solid #eeeeee;
+}
+.menu_links .ui-btn{
+margin-top:0px;
+border:0px;
+}
+.menu_links .ui-btn-inner{
+	margin-top:10px;
+	margin-left:30px;
+	width:80%;
+	text-align:left;
+	vertical-align:middle;
+}
+
+/* animation for panel */
+.ui-panel-animate{
+	transition:transform 1350 ms ease 0s !important;
+}
+
+/* make images spin 360 degrees in 4 seconds */
+a:active img {
+    -webkit-transform: rotate(360deg);
+    -webkit-transition: -webkit-transform 4s ease-out;
+}
+
+/* next 4 styles are for the home menu, so it it can be bigger */
+#home_content {
+	padding: 0 !important;
+	height: 100% !important;
+}
+.home_buttons {
+	margin: 0 !important;
+}
+#home_content .ui-btn-inner {
+	padding: 5 !important;
+}
+#track_2_content {
+	padding: 5 0 10 10 !important;
+}
+/* romove padding for graph */
+#analyse_2_content {
+	padding: 5px 0 0 0 !important;
+}
+

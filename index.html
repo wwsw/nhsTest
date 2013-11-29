@@ -1,0 +1,31 @@
+﻿<html>
+<head>
+    <!-- makes sure that app has the right size in mobile browser -->
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1"/>
+    <title>Behaviour App</title>
+
+    <!-- import JavaScript files -->
+    <script type="text/javascript" src="JavaScript/importJSandCSS.js"></script>
+
+</head>
+<body>
+    <div id="login" class="page" data-role="page" data-shadow="false">
+        <div id="header_login" class="header" data-role="header" data-position="fixed"><h1>App Login</h1></div>
+        <div data-role="content" class="content">
+            <!-- LOGO -->
+            <br/>
+            <p><center><img src="Resources/Images/nhs.png" width=30%></img></center></p>
+            <p><center><img src="Resources/Images/sabp.jpg" width=60%></img></center></p>
+
+            <form method="post" action="home.php" name="loginform">
+                <input id="login_input_username" class="login_input" type="text" placeholder="Enter Username" name="user_name" value=""/> 
+                <input id="login_input_password" class="login_input" type="password" placeholder="Enter Password" name="user_password" autocomplete="off" />
+                <!--center><input type="submit" data-role="button" name="login" value="Login" style="max-width: 300px;"/></center--> 
+                <center><a data-role="button" href="./HTML/home.html" style="max-width: 300px;">Login</a></center> 
+                <center><big>Note: All pages must first go through the login page. Please do not press the browser back button.</big></center>  
+            </form>
+            <a href="./HTML/register.html">**DEV** register</a>
+        </div>
+    </div>
+</body>
+</html>

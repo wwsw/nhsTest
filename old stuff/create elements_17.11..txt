@@ -1,0 +1,130 @@
+
+/* ***************************** MENU ******************************************** */
+
+// call function on pagebeforeshow so page ID can be accessed (for if statement in next line) but not on pageshow so button does not appear after page has loaded 
+$(document).on('pagebeforeshow', '[data-role="page"]', function(){
+    // no menu on login page
+    if ($.mobile.activePage.attr("id")!="login") {
+        // add a the menu button to header
+        $(".header").append('<a data-icon="bars" class="ui-btn-right" href="#menu_panel">Menu</a>'); 
+        // add the menu panel        
+        $("<div>").attr({ 'id': 'menu_panel', 'class': 'menu_panel', 'data-role': 'panel', 'data-position': 'right' }).append(''+
+            '<ul class="menu_links" data-role="listview">'+
+                '<li data-icon="home" style="border-bottom: 1px solid black;"><a href="./home.html">Home</a></li>'+
+                '<li data-icon="edit" style="border-bottom: 1px solid black;"><a href="./track_1.html">Monitor</a></li>'+
+                '<li data-icon="grid" style="border-bottom: 1px solid black;"><a href="./settings_assign_behaviours_1.html">Assign</a></li>'+
+                '<li data-icon="star" style="border-bottom: 1px solid black;"><a href="./analyse_1.html">Analyse</a></li>'+
+                '<li data-icon="gear" style="border-bottom: 1px solid black;"><a href="./settings.html">Settings</a></li>'+
+                '<li data-icon="info" style="border-bottom: 1px solid black;"><a href="./help.html">Help</a></li>'+
+                '<li data-icon="delete"><a href="#header" data-rel="close">Close menu</a></li>'+
+            '</ul>').appendTo($(this));
+        $('.page').trigger('pagecreate');
+    }
+    
+});
+
+// show menu panel when the right button in the header is clicked
+$(document).on('click', '.ui-btn-right', function(){   
+       $.mobile.activePage.find('.menu_panel').panel("open");       
+}); 
+
+// swipe open/close panel
+// http://view.jquerymobile.com/1.3.0/docs/examples/panels/panel-swipe-open.php#&ui-state=dialog
+$(document).on('pageinit', '[data-role="page"]', function () {
+	$(document).on("swipeleft swiperight", function (a) {
+    	if (a.type === "swipeleft") {
+            $(".menu_panel").panel("open");
+        } 
+        if (a.type === "swiperight") {
+            $(".menu_panel").panel("close");
+        } 
+    });
+});
+
+/* ***************************** FOOTER ON all pages ******************************************** */
+
+// create footer for every page
+$(document).on('pagecreate', '[data-role="page"]', function(){
+    $("<div>").attr({'class':'main_footer','data-role':'footer', 'data-position':'fixed'}).append('<h1>UCL</h1>').appendTo($(this));
+});
+
+/* ***************************** CREATE RESPONSIVE HOME MENU track_1 ******************************************** */
+
+$(document).on('pagebeforeshow', '#home', function(){
+    // create home menu on pagebeforeshow 
+    initHome(); // --> initHome code in home_menu.js file
+    // redraw menu when screen is resized (orientation change)
+    $(window).resize(function() {
+        initHome();
+    });
+});
+
+/* ***************************** SAVE SELECTED PATIENT ON track_1 ******************************************** */
+
+// on pagecreate on page with ID 'track_1'
+$(document).on('pagecreate', '#track_1', function(){
+    // on click on button (child of <li> which is child of container with ID 'track_1_patient_list')
+    $('#track_1_patient_list').children('li').children('a').on('click', function () {
+        // save value of attribute patient to localStorage with key 'patient-to-monitor'
+        setStorage('patient-to-monitor', $(this).attr('patient'));
+    });
+});
+
+/* ***************************** GENERATE BUTTONS ON track_2 ******************************************** */
+
+// array with behaviours assigned to certain patient --> should be generated from database
+behaviour_array = new Array("Banging head", "Running around in circles", "Throwing food onto floor", "Screaming and shouting", "Overly excited", "Blinking");
+
+$(document).on('pageinit', '#track_2', function () {
+    var patient = getStorage('patient-to-monitor');
+    $("#patient_name").append('<p>Monitor for '+patient+'</p>');
+    // for loop creating a button for each element in the array in the div with ID 'button_list'
+    for(var i = 0; i<behaviour_array.length; i++){
+        $("#button_list").append("<a data-role='button' id='monitor_buttons' style='text-align: left;' >"+behaviour_array[i]+"</a>  ");
+    }
+    // call trigger("create") on parent div (#button_list) to correctly show new elements (buttons)
+    $("#button_list").trigger("create");
+});
+
+/* ***************************** SAVE SELECTED PARAMETERS ON analyse_1 ******************************************** */
+// on pagecreate on page with ID 'analyse_2'
+$(document).on('pagecreate', '#analyse_1', function(){
+    // on click on button 
+    $('#generate_graph').on('click', function () {
+        setStorage('timeframe', $('#timeframe').val());
+        setStorage('chartType', $('#chart-type').val());
+        setStorage('patient', $('#patient').val());
+        setStorage('start-date', $('#start-date').val());
+        setStorage('end-date', $('#end-date').val());
+    });
+});
+
+
+/* ***************************** SET INPUT FIELDS TO SAVED PARAMETERS ON analyse_1 ******************************************** */
+
+$(document).on('pagecreate', '#analyse_1',  function() {
+    // get today's date
+    var date = new Date();
+    // parse date
+    var today = date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate();
+    // set end date to today's date
+    $('#end-date').val(today);
+
+    // for start date check if one is in localStorage. If so take that value, if not take today's date.
+    var startDate = getStorage('start-date');
+    if (startDate !=='undefined' && startDate !== null){
+        $('#start-date').val(startDate);
+        } 
+    else {
+        $('#start-date').val(today);
+    }
+
+    // set the other values to the last used ones, if available
+    var timeframe = getStorage('timeframe');
+    if (timeframe !=='undefined' && timeframe !== null) $('#timeframe').val(timeframe);
+    var chartType = getStorage('chartType');
+    if (chartType !=='undefined' && chartType !== null) $('#chart-type').val(chartType);
+    var patient = getStorage('patient');
+    if (patient !=='undefined' && patient !== null) $('#patient').val(patient);
+
+});

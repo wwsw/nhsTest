@@ -1,0 +1,19 @@
+<html>
+<head>
+
+    <script type="text/javascript">
+        var request = window.indexedDB.open("MeineTestdatenbank");
+        request.onerror = function(event) {
+          alert("error!");
+        };
+        request.onsuccess = function(event) {
+          alert("success!");
+        };
+    </script>
+    
+
+</head>
+<body>
+    <p>test indexDB</p>
+</body>
+</html>

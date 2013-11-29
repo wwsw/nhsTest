@@ -1,0 +1,11 @@
+var menuLabels = new Array("Home", "Monitor", "Assign", "Analyse", "Settings", "Help", "Close menu");
+var menuLinks = new Array("./home.html", "./track_1.html", "./settings_assign_behaviours_1.html", "./analyse_1.html", "./settings.html", "./help.html", "#header")
+var menuIcons = new Array("home", "edit", "grid", "star", "gear", "info", "delete")
+
+ var htmlString = '<a data-icon="bars" class="ui-btn-right menu-panel-button" href="#menu_panel">Menu</a>';
+ if ($.mobile.activePage.attr("id")!="login") {
+    for (var i=0;i<menuLabels;i++){
+        if (window.location.pathname != menuLinks[i]) {
+            htmlString += "<li data-icon='"+menuIcons[i]+"'                     "
+        }
+    }
